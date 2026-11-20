@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101715">
+  <meta name="description" content="Inspect UPI payment screenshots and review warning signals. Always confirm payment in your own bank app.">
+  <title>Screenshot scanner · UPI Shield</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23b9edcc'/%3E%3Cpath d='M20 7l11 4v8c0 7-7 12-11 14C16 31 9 26 9 19v-8z' fill='none' stroke='%23101815' stroke-width='2'/%3E%3Cpath d='m14 20 4 4 8-9' fill='none' stroke='%23101815' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css"><script src="/static/script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-5 8-8 9-3-1-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3M2 12h20M8 8h8M8 16h5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v4h16v-4"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 6h4l2-3h4l2 3h4v13H4V6Z"/><circle cx="12" cy="12" r="4"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Zm0 6v5m0 3h.01"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Zm0 0v5h5M8 12h8m-8 4h5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a9 9 0 1 0 1 8M20 3v6h-6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol>
+</defs></svg>
+<aside class="sidebar">
+  <a href="#scanner" class="brand"><span class="brand-icon"><svg><use href="#i-shield"/></svg></span><span>UPI Shield<small>THE MERCHANT WORKSPACE</small></span></a>
+  <div class="workspace-label"><span class="workspace-avatar">M</span><span>Merchant workspace<small>Screenshot verification tools</small></span></div>
+  <p class="nav-label">WORKSPACE</p>
+  <nav aria-label="Main navigation">
+    <a href="#scanner" class="nav-link active" data-view="scanner" aria-current="page"><svg><use href="#i-scan"/></svg><span>Screenshot scanner</span><span class="nav-indicator"></span></a>
+    <a href="#history" class="nav-link" data-view="history"><svg><use href="#i-clock"/></svg><span>Scan history</span></a>
+    <a href="#guide" class="nav-link" data-view="guide"><svg><use href="#i-help"/></svg><span>How it works</span></a>
+  </nav>
+  <div class="sidebar-bottom"><div class="bank-reminder"><svg><use href="#i-shield"/></svg><strong>One extra check.<br>A little more confidence.</strong><p>Your bank app is always the final word on payment.</p><a href="#guide">Know the limits <span>↗</span></a></div><div class="prototype"><span></span> HACKATHON PROTOTYPE <small>v1.0</small></div></div>
+</aside>
+<div class="app-main">
+  <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb-current">Screenshot scanner</strong></div><button id="service-button" class="service-status" type="button" title="Check connection to the analysis service"><span class="status-dot"></span><span id="service-label">Checking connection</span><svg><use href="#i-refresh"/></svg></button></header>
+  <main id="main" tabindex="-1">
+    <section id="scanner-view" class="view" aria-labelledby="scanner-heading">
+      <div class="page-heading"><div><p class="eyebrow">A SECOND LOOK, BEFORE YOU HAND IT OVER</p><h1 id="scanner-heading">Screenshot scanner<span>.</span></h1><p>Turn a payment screenshot into a more informed decision.</p></div><span class="page-tag"><svg><use href="#i-lock"/></svg> No bank access needed</span></div>
+      <div class="summary-strip" aria-label="Scan statistics"><div><span class="summary-icon"><svg><use href="#i-scan"/></svg></span><span>Scans in this workspace<strong id="stat-total">—</strong></span></div><div><span class="summary-icon amber"><svg><use href="#i-alert"/></svg></span><span>Flagged as suspicious<strong id="stat-suspicious">—</strong></span></div><div><span class="summary-icon blue"><svg><use href="#i-file"/></svg></span><span>Supported screenshot apps<strong class="supported-names">Google Pay · PhonePe · Paytm</strong></span></div></div>
+      <p id="stats-notice" class="quiet-notice" hidden>Scan counts are unavailable. You can still try a new scan.</p>
+      <div class="scan-workspace">
+        <section class="panel upload-panel" aria-labelledby="upload-heading">
+          <div class="panel-heading"><div class="heading-title"><span class="step-number">01</span><h2 id="upload-heading">Upload screenshot</h2></div><span class="small-label">JPG, PNG · Up to 8 MB</span></div>
+          <form id="scan-form" novalidate><fieldset id="upload-controls"><legend class="sr-only">Screenshot and payment app</legend>
+            <fieldset class="app-picker"><legend>Which app is the screenshot from?</legend><div class="app-options">
+              <label class="app-option"><input type="radio" name="upi-app" value="Google Pay" checked><span><b class="app-logo google-logo">G</b><span>Google Pay</span><i></i></span></label>
+              <label class="app-option"><input type="radio" name="upi-app" value="PhonePe"><span><b class="app-logo phonepe-logo">पे</b><span>PhonePe</span><i></i></span></label>
+              <label class="app-option"><input type="radio" name="upi-app" value="Paytm"><span><b class="app-logo paytm-logo">P</b><span>Paytm</span><i></i></span></label>
+            </div></fieldset>
+            <input id="file-input" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg" hidden><input id="camera-input" type="file" accept="image/png,image/jpeg" capture="environment" hidden>
+            <div id="drop-zone" class="drop-zone"><div id="upload-prompt" class="upload-prompt"><span class="upload-icon"><svg><use href="#i-upload"/></svg></span><h3>Drop your screenshot here</h3><p>Use the original image for a clearer analysis.</p><button id="browse-button" type="button" class="secondary-button">Browse files <svg><use href="#i-arrow"/></svg></button><span class="drop-hint">or drag and drop a JPG or PNG</span></div>
+              <div id="preview-wrap" class="preview-wrap" hidden><div class="preview-image"><img id="image-preview" alt="Selected payment screenshot"></div><div class="preview-meta"><svg><use href="#i-file"/></svg><div><strong id="file-name"></strong><span id="file-size"></span></div><button id="remove-file" type="button" class="icon-button" aria-label="Remove selected screenshot">×</button></div><button id="replace-file" class="text-button" type="button">Choose a different screenshot</button></div>
+            </div><div class="upload-tools"><span><svg><use href="#i-lock"/></svg> Original images are not retained</span><button id="camera-button" type="button" class="text-button"><svg><use href="#i-camera"/></svg> Take a photo</button></div>
+          </fieldset><div id="upload-error" class="inline-error" role="alert" hidden></div><button id="analyse-button" class="primary-button" type="submit" disabled><svg><use href="#i-scan"/></svg><span id="analyse-label">Analyse screenshot</span><svg class="trailing"><use href="#i-arrow"/></svg></button><p class="upload-footnote">Checks visual signals and local scan history. It does not verify a bank transfer.</p></form>
+        </section>
+        <section class="panel result-panel" id="report-panel" aria-labelledby="result-title" aria-busy="false">
+          <div class="panel-heading"><div class="heading-title"><span class="step-number">02</span><h2 id="result-title">Analysis report</h2></div><span id="report-status" class="report-status">Awaiting screenshot</span></div>
+          <div id="empty-state" class="empty-state"><div class="receipt-art" aria-hidden="true"><div class="receipt-back"></div><div class="receipt-front"><span><svg><use href="#i-shield"/></svg></span><i></i><i></i><hr><b></b><b></b></div><span class="receipt-lens"><svg><use href="#i-search"/></svg></span></div><h3>A closer look starts here.</h3><p>Your report will show what looks unusual,<br>what was checked, and what needs a second look.</p><div class="check-chips"><span>Layout & pixels</span><span>Text & timestamps</span><span>Reuse detection</span></div></div>
+          <div id="loading-state" class="loading-state" hidden><div class="scan-orbit"><svg><use href="#i-scan"/></svg></div><h3>Inspecting your screenshot</h3><p>Reading image details and checking transaction signals.</p><div class="indeterminate" role="progressbar" aria-label="Analysis in progress"></div><span id="elapsed-label">0 seconds elapsed</span><button id="cancel-button" type="button" class="text-button">Cancel waiting</button><small>The server may finish and save this scan even if you cancel.</small></div>
+          <div id="result-content" hidden>
+            <div id="verdict-card" class="verdict-card manual"><div><span class="eyebrow" id="verdict-eyebrow">REVIEW RECOMMENDED</span><h3 id="verdict-label" tabindex="-1"></h3><p id="verdict-caption"></p></div><div class="risk-meter" id="risk-meter"><div><strong id="risk-score">—</strong><small>/ 100</small></div></div></div><p class="score-note">Heuristic signal score · not a probability of fraud</p>
+            <div id="partial-notice" class="partial-notice" hidden><svg><use href="#i-alert"/></svg><span>Some checks are incomplete. A low score does not establish authenticity.</span></div>
+            <div class="result-meta"><span id="result-app"></span><span id="result-image-size"></span><span id="result-scan-id"></span><span id="result-time"></span></div>
+            <div class="result-section"><h4>What we found <span id="reason-count"></span></h4><ul id="reason-list" class="reason-list"></ul></div>
+            <div class="result-section"><h4>Individual checks <span id="check-coverage"></span></h4><div id="checks-list" class="checks-list"></div></div>
+            <div class="transaction-box"><small>TRANSACTION / UTR ID</small><strong id="transaction-id"></strong><span>Extracted from the image. Not verified with a bank.</span></div>
+            <details class="ocr-details"><summary>Extracted text <svg><use href="#i-file"/></svg></summary><pre id="ocr-text"></pre></details><p id="result-notice" class="result-notice"></p>
+            <div class="report-actions"><button id="download-report" class="secondary-button" type="button"><svg><use href="#i-download"/></svg> Save report</button><button id="new-scan" class="text-button" type="button">Start a new scan <svg><use href="#i-arrow"/></svg></button></div>
+          </div>
+        </section>
+      </div>
+      <aside class="payment-notice"><svg><use href="#i-shield"/></svg><p><strong>A screenshot is a clue. Your bank is the confirmation.</strong><span>Always check the credit in your own bank or UPI app before handing over goods.</span></p><a href="#guide">Learn more <svg><use href="#i-arrow"/></svg></a></aside>
+      <section class="recent-section" aria-labelledby="recent-title"><div class="section-heading"><h2 id="recent-title">Recent scans <span class="small-label">This workspace</span></h2><a class="text-button" href="#history">View history <svg><use href="#i-arrow"/></svg></a></div><div id="recent-scans" class="recent-scans"><p class="table-message">Loading recent activity…</p></div></section>
+    </section>
+    <section id="history-view" class="view" aria-labelledby="history-heading" hidden>
+      <div class="page-heading"><div><p class="eyebrow">A RECORD OF YOUR SECOND LOOKS</p><h1 id="history-heading">Scan history<span>.</span></h1><p>Review the latest 100 scans saved on this server.</p></div><button class="secondary-button" id="refresh-history" type="button"><svg><use href="#i-refresh"/></svg> Refresh</button></div>
+      <div class="history-toolbar"><label class="search-field"><svg><use href="#i-search"/></svg><input id="history-search" type="search" placeholder="Search by app, result or scan ID" aria-label="Search scan history"></label><label class="filter-field"><span class="sr-only">Filter results</span><select id="history-filter"><option value="all">All results</option><option value="suspicious">Suspicious</option><option value="manual">Manual check</option><option value="clear">No obvious anomaly</option></select></label><button id="export-history" class="secondary-button" type="button" disabled><svg><use href="#i-download"/></svg> Export CSV</button></div>
+      <p id="history-summary" class="quiet-notice" role="status"></p><div class="history-table-wrap"><table class="history-table"><caption class="sr-only">Recent screenshot analysis history</caption><thead><tr><th scope="col">Scan</th><th scope="col">Payment app</th><th scope="col">Assessment</th><th scope="col">Signal score</th><th scope="col">Date & time</th></tr></thead><tbody id="history-body"></tbody></table></div><p class="history-footnote">History stores scan metadata, not the original image or full report. Times use your device’s timezone.</p>
+    </section>
+    <section id="guide-view" class="view" aria-labelledby="guide-heading" hidden>
+      <div class="page-heading"><div><p class="eyebrow">KNOW WHAT YOU’RE CHECKING</p><h1 id="guide-heading">A smarter second look<span>.</span></h1><p>Screenshot analysis helps you spot signals. It cannot confirm settlement.</p></div></div>
+      <div class="guide-steps"><article><span>01</span><h2>Choose the original</h2><p>Select the app shown in the receipt, then upload an unedited PNG or JPG. Keep the amount, date, and reference number visible.</p></article><article><span>02</span><h2>Read the whole report</h2><p>Look at the reasons and individual checks. Missing OCR or reference images will limit the analysis, even when the score is low.</p></article><article><span>03</span><h2>Confirm the credit</h2><p>Open your own bank or UPI app. Match the amount and transaction details before you release goods or services.</p></article></div>
+      <div class="guide-faq"><h2>A few things worth knowing</h2><details open><summary>Does “no obvious anomaly” mean the payment is real?</summary><p>No. A manipulated screenshot can look convincing. The result describes available image checks, not whether money arrived in your account.</p></details><details><summary>What is the signal score?</summary><p>A combination of heuristic warning signals from the backend. It is not a calibrated probability or a guarantee. Read missing checks and explanations alongside the number.</p></details><details><summary>Why did a screenshot get flagged again?</summary><p>The server checks image and transaction fingerprints against its scan history. Rescanning a genuine receipt can trigger a reuse warning. Compare with your records.</p></details><details><summary>What happens to the screenshot?</summary><p>The application does not retain images as scan history. The server stores metadata and hashes for duplicate checks. Reports you download may contain OCR text and transaction details; keep them private.</p></details><details><summary>What if the camera or analysis is unavailable?</summary><p>Use Browse files to select an existing screenshot. If the service is offline, retry the connection. If OCR or reference checks are unavailable, use your bank records to verify payment.</p></details><details><summary>Who can see scan history?</summary><p>This prototype has shared server history and no user accounts. Use it only in a trusted environment. History is not separated by merchant.</p></details></div><a class="primary-button guide-cta" href="#scanner">Check a screenshot <svg><use href="#i-arrow"/></svg></a>
+    </section>
+    <footer><span><svg><use href="#i-shield"/></svg> Built for a more confident counter.</span><span>UPI Shield · Code Fuzion 2026</span></footer>
+  </main>
+</div><div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div><div id="toast" class="toast" role="status" hidden></div>
+</body></html>

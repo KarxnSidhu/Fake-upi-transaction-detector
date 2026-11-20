@@ -1,0 +1,8 @@
+{
+  "name": "upi-shield-frontend-checks",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional browser verification; the application itself needs no npm build",
+  "scripts": {"test:frontend": "node tests/browser/run.cjs"},
+  "devDependencies": {"playwright": ">=1.49 <2"}
+}

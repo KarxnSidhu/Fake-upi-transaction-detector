@@ -1,0 +1,20 @@
+{
+  "contract": "FRONTEND.md: merchant scanner workflow, existing dark theme and FastAPI API, accessible scanner/history/guide views, 390x844, 768x1024 and 1440x900 layouts.",
+  "targetViewports": ["390x844", "768x1024", "1440x900"],
+  "accessibility": {"status":"pass", "evidence":"Native labeled controls and fieldsets; keyboard Tab moved from Browse files to Take a photo with a solid visible outline. Main action buttons measured at least 44px high. 81 visible desktop text nodes met the applicable 4.5:1 or 3:1 contrast threshold. Activating the reduced-motion CSS rule removed animation. Status and error messages have live regions. This is a targeted check, not a full assistive-technology certification."},
+  "responsive": {"status":"pass", "evidence":"36 browser assertions passed at each target viewport (108 checks total), including no horizontal overflow before upload or with a long filename and transaction ID. Desktop uses a fixed sidebar and two columns; tablet uses top navigation; phone stacks upload and report. Screenshots visually inspected."},
+  "contentStates": {
+    "empty": {"status":"pass", "evidence":"No file: disabled analysis button, upload prompt and report placeholder. New scan restores the same state."},
+    "loading": {"status":"pass", "evidence":"Delayed fixture reveals progress and locks file/app controls. A dropped replacement is ignored during the request. Cancel restores controls with an explicit server-may-still-save warning."},
+    "error": {"status":"pass", "evidence":"Unsupported, empty, oversized and damaged images rejected. Server errors, malformed results, offline service, unavailable history and retry controls exercised."},
+    "partial": {"status":"pass", "evidence":"Missing reference fixture renders a partial notice and 8/9 completed checks. Missing checks object renders all nine unavailable, never as passes. OCR markup is inert text."},
+    "success": {"status":"pass", "evidence":"Suspicious, manual and no-obvious-anomaly results rendered; report export and filtered history CSV export initiated. Clear verdict retains the not-proof-of-payment explanation."},
+    "permission": {"status":"not-applicable", "reason":"There is no application-managed permission prompt. The camera uses a native file input with capture=environment; the browser/OS owns permission and dismissal. Browse files remains a fallback. Physical camera capture and OS permission dialogs were not tested."}
+  },
+  "renderedEvidence": [
+    {"viewport":"390x844", "artifact":"mobile.jpg", "observation":"Single-column scanner and report, compact three-item navigation, readable app options and no page overflow. QA fixture counts/history, not real transactions."},
+    {"viewport":"768x1024", "artifact":"tablet.jpg", "observation":"Top navigation and two-column scanner; upload controls, report placeholder and recent history fit. The visible toast is from the export test."},
+    {"viewport":"1440x900", "artifact":"desktop.jpg", "observation":"Fixed sidebar, workspace statistics, side-by-side upload and analysis, primary scan control within the first viewport. Full-page capture includes history below the fold."}
+  ],
+  "limitations": ["Browser requests were supplied with deterministic API fixtures matching the supplied backend schema; no live browser-to-backend run was verified.", "The existing Python regression suite stalled at its first TestClient request in this environment and was interrupted; no backend-test pass is claimed.", "Camera hardware, native camera permission prompts and screen-reader operation require real-device testing."]
+}
